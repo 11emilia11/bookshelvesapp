@@ -30,4 +30,5 @@ UFRPE.
 <img src="/prototype/row2.png">
 
 ### Widget Tree
+Obs.: Para visualizar melhor a imagem abaixo basta clicar que será possível ver os detalhes da widget tree.
 <img src="/prototype/widget-tree.png">
