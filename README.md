@@ -29,4 +29,5 @@ UFRPE.
 
 <img src="/prototype/row2.png">
 
-
+### Widget Tree
+<img src="/prototype/widget-tree.png">
