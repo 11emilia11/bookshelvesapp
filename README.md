@@ -8,13 +8,8 @@ UFRPE.
 
 ### Funcionalidades
 * Cadastro de usuário no aplicativo
-* Busca por usuários do aplicativo
-* Atualizar informações do usuário
-* Remover usuário
 * Incluir livro na estante de leitura atual
-* Atualizar progresso de leitura do livro
 * Incluir livro na estante de leituras futuras
-* Remover livro da estante
 * Avaliar livro lido
 * Buscar livro por autor/gênero
 * Mostrar perfil do usuário com livros lidos, e informações sobre os livros
