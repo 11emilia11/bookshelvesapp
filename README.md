@@ -22,13 +22,11 @@ UFRPE.
 
 ### Protótipo 
 
-Tela inicial
-<img src="/prototype/Prototipo-telas-bookshelves-Page-1.png">
-Cadastro de usuário
-<img src="/prototype/Prototipo-telas-bookshelves-Page-2.png">
-Perfil do usuário
-<img src="/prototype/Prototipo-telas-bookshelves-Page-3.png">
-Busca de livros
-<img src="/prototype/Prototipo-telas-bookshelves-Page-4.png">
-Detalhes do livro
-<img src="/prototype/Prototipo-telas-bookshelves-Page-5.png">
+
+<img src="/prototype/row1.png">
+
+
+
+<img src="/prototype/row2.png">
+
+
