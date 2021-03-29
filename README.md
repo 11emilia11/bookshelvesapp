@@ -21,13 +21,14 @@ UFRPE.
 * Recomendar leituras para o usuário
 
 ### Protótipo 
-* Tela inicial
-<img src="/prototype/Prototipo-telas-bookshelves-Page-1.png.png">
-* Cadastro de usuário
-<img src="/prototype/Prototipo-telas-bookshelves-Page-2.png.png">
-* Perfil do usuário
-<img src="/prototype/Prototipo-telas-bookshelves-Page-3.png.png">
-* Busca de livros
-<img src="/prototype/Prototipo-telas-bookshelves-Page-4.png.png">
-* Detalhes do livro
-<img src="/prototype/Prototipo-telas-bookshelves-Page-5.png.png">
+
+Tela inicial
+<img src="/prototype/Prototipo-telas-bookshelves-Page-1.png">
+Cadastro de usuário
+<img src="/prototype/Prototipo-telas-bookshelves-Page-2.png">
+Perfil do usuário
+<img src="/prototype/Prototipo-telas-bookshelves-Page-3.png">
+Busca de livros
+<img src="/prototype/Prototipo-telas-bookshelves-Page-4.png">
+Detalhes do livro
+<img src="/prototype/Prototipo-telas-bookshelves-Page-5.png">
