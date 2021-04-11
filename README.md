@@ -31,3 +31,7 @@ Obs.: Para visualizar melhor a imagem abaixo basta clicar que será possível ve
 
 ### Logo 
 <img src="/prototype/logo.png">
+
+
+### Navegação de telas
+<img src="/prototype/navigation_graph.png">
