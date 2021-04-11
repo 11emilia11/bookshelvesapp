@@ -3,7 +3,7 @@
 Este repositório será utilizado para o desenvolvimento do aplicativo **bookshelves** que será um aplicativo de
 estante virtual de livros, no qual os usuários poderão salvar os seus livros que estão sendo lidos, buscar livros
 usando diferentes filtros e também receber recomendações e avaliar livros lidos. Este aplicativo faz parte do projeto
-da disciplina de Fundamentos de Computação Aplicada, parte do programa de Pós Graduação em Informática Aplicada - PPGIA 
+da disciplina de Fundamentos de Programação Aplicada, parte do programa de Pós Graduação em Informática Aplicada - PPGIA 
 UFRPE. 
 
 ### Funcionalidades
