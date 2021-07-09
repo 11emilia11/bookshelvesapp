@@ -1,6 +1,6 @@
-import 'package:bookshelvesapp/book_detail_page.dart';
-import 'package:bookshelvesapp/home_page.dart';
-import 'package:bookshelvesapp/register_page.dart';
+import 'package:bookshelvesapp/book/book_detail_page.dart';
+import 'package:bookshelvesapp/home/home_page.dart';
+import 'package:bookshelvesapp/register/register_page.dart';
 import 'package:flutter/material.dart';
 
 

@@ -8,6 +8,12 @@
             "name": "bookshelvesapp",
             "request": "launch",
             "type": "dart"
+        },
+        {
+            "name": "bookshelvesapp (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
         }
     ]
 }
