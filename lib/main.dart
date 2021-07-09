@@ -1,4 +1,5 @@
 import 'package:bookshelvesapp/book/book_detail_page.dart';
+import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/home/home_page.dart';
 import 'package:bookshelvesapp/register/register_page.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Bookshelves", 
-      home: BookDetailPage(
+      home: FeedPage(
   
         ),
       );
