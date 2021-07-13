@@ -57,7 +57,55 @@ class _FeedPageState extends State<FeedPage> {
                       BookCardWidget(),
                       BookCardWidget(),],
                   ),
-              )
+              ),
+              Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              
+              Container(
+                  height: 50.0,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    border: Border.all(color: Colors.purple[300], width: 2),
+                  ),
+                  child: Center(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 15),
+                        ),
+                        onPressed: null,
+                        child: const Text('Recomendações' , style: TextStyle(color: Colors.black87)),
+                               
+                      ),
+                      
+                    )),
+               Container(
+                  height: 50.0,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+
+                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color:  Color(0xFFCC3750),
+                  ),
+                  child: Center(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 15),
+                        ),
+                        onPressed: null,
+                        child: const Text('Sair', style: TextStyle(color: Colors.white)),
+                               
+                      ),
+                      
+                    )),
+                
+              
+
+            ],
+          ), // buttons 
           ],
         ),
       )
