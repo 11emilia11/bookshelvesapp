@@ -1,3 +1,4 @@
+import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/book_card/book_card_widget.dart';
 import 'package:bookshelvesapp/recommendation/widgets/rec_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,11 @@ class _RecommendationPageState extends State<RecommendationPage> {
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 15),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                         Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => FeedPage()));
+                        },
                         child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
                                
                       ),

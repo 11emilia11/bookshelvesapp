@@ -1,5 +1,7 @@
 
+import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/home/widgets/home_app_bar.dart';
+import 'package:bookshelvesapp/register/register_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -67,7 +69,11 @@ class _HomePageState extends State<HomePage> {
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 15),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => FeedPage()));
+                        },
                         child: const Text('Login', style: TextStyle(color: Colors.white)),
                                
                       ),
@@ -86,7 +92,11 @@ class _HomePageState extends State<HomePage> {
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 15),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => RegisterPage()));
+                        },
                         child: const Text('Cadastro' , style: TextStyle(color: Colors.grey)),
                                
                       ),

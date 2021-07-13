@@ -1,3 +1,5 @@
+import 'package:bookshelvesapp/feed/feed_page.dart';
+import 'package:bookshelvesapp/home/home_page.dart';
 import 'package:bookshelvesapp/register/widgets/register_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +85,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 15),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()));
+                        },
                         child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
                                
                       ),
@@ -103,7 +109,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 15),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => FeedPage())
+                          );
+                        },
                         child: const Text('Login', style: TextStyle(color: Colors.white)),
                                
                       ),

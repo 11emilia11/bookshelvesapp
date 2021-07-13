@@ -1,6 +1,8 @@
 import 'package:bookshelvesapp/feed/level_button/level_button_widget.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/feed/widgets/book_card/book_card_widget.dart';
+import 'package:bookshelvesapp/home/home_page.dart';
+import 'package:bookshelvesapp/recommendation/recommendation_page.dart';
 import 'package:flutter/material.dart';
 
 class FeedPage extends StatefulWidget {
@@ -75,7 +77,12 @@ class _FeedPageState extends State<FeedPage> {
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 15),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => RecommendationPage()),
+                          );
+                        },
                         child: const Text('Recomendações' , style: TextStyle(color: Colors.black87)),
                                
                       ),
@@ -95,7 +102,11 @@ class _FeedPageState extends State<FeedPage> {
                         style: TextButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 15),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()));
+                        },
                         child: const Text('Sair', style: TextStyle(color: Colors.white)),
                                
                       ),
