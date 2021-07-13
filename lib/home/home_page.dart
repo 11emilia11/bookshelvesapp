@@ -1,4 +1,5 @@
 
+import 'package:bookshelvesapp/home/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,30 +18,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*  appBar: AppBar(
-         title: Text('Bookshelves'), 
-        ),*/
+        appBar: HomeAppBar(
+        
+        ),
         body: Padding(
             padding: EdgeInsets.all(20),
             child: ListView(
               children: <Widget>[
-                Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Bookshelves',
-                      style: TextStyle(
-                          color: Colors.grey[700],
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30),
-                    )),
-                Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
-                    child: Icon(
-                      Icons.book_rounded,
-                      color: Colors.purple[300],
-                    )),
+               
+                   
                 Container(
                   padding: EdgeInsets.all(10),
                   child: TextField(
@@ -62,6 +48,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                height: 24,
+              ),
                 
 
                 
@@ -72,7 +61,7 @@ class _HomePageState extends State<HomePage> {
 
                    decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
-                    color: Colors.purple[300],
+                    color:  Color(0xFF04D361),
                   ),
                   child: Center(
                       child: TextButton(
@@ -91,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                    decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
-                    border: Border.all(color: Colors.purple[300], width: 3),
+                    border: Border.all(color: Color(0xFF04D361), width: 3),
                   ),
                   child: Center(
                       child: TextButton(
