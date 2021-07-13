@@ -18,9 +18,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: HomeAppBar(
-        
-        ),
+        appBar: HomeAppBar(),
+
         body: Padding(
             padding: EdgeInsets.all(20),
             child: ListView(
@@ -80,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                    decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
-                    border: Border.all(color: Color(0xFF04D361), width: 3),
+                    border: Border.all(color: Color(0xFF04D361), width: 2),
                   ),
                   child: Center(
                       child: TextButton(

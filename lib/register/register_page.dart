@@ -1,3 +1,4 @@
+import 'package:bookshelvesapp/register/widgets/register_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -8,22 +9,13 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-        children: [
-    
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.book_rounded, color: Colors.purple),
-              Text('Bookshelves', style: TextStyle(),),
-              
+      appBar: RegisterAppBar(),
 
-            ]
-          ),
-           // appbar
+      body: Padding(
+        padding:const EdgeInsets.all(8.0),
+        child: ListView(
+        children: <Widget> [
+        
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -66,21 +58,51 @@ class RegisterPage extends StatelessWidget {
               ),
              
             ],
-          ), // form 
+          ), 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: const TextStyle(fontSize: 20)),
-                onPressed: () {},
-                child: const Text('Voltar'),),
+              
+              Container(
+                  height: 50.0,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    border: Border.all(color: Color(0xFF04D361), width: 2),
+                  ),
+                  child: Center(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 15),
+                        ),
+                        onPressed: null,
+                        child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
+                               
+                      ),
+                      
+                    )),
+               Container(
+                  height: 50.0,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
 
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: const TextStyle(fontSize: 20)),
-                onPressed: () {},
-                child: const Text('Entrar'),),
+                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color:  Color(0xFF04D361),
+                  ),
+                  child: Center(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 15),
+                        ),
+                        onPressed: null,
+                        child: const Text('Login', style: TextStyle(color: Colors.white)),
+                               
+                      ),
+                      
+                    )),
+                
               
 
             ],
