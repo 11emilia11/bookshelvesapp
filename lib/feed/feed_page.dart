@@ -1,4 +1,4 @@
-import 'package:bookshelvesapp/feed/level_button/level_button_widget.dart';
+import 'package:bookshelvesapp/feed/widgets/level_button/level_button_widget.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/feed/widgets/book_card/book_card_widget.dart';
 import 'package:bookshelvesapp/home/home_page.dart';

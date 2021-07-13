@@ -1,4 +1,6 @@
+import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
+import 'package:bookshelvesapp/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bookshelvesapp/core/app_colors.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
@@ -86,7 +88,11 @@ class _BookDetailPageState extends State<BookDetailPage> {
                     child: TextButton(
                       style: TextButton.styleFrom(
                         textStyle: const TextStyle(fontSize: 16)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => FeedPage()));
+                      },
                       child: const Text('Voltar', style: TextStyle(color: Colors.white)),),
                   ),
                   
@@ -99,7 +105,11 @@ class _BookDetailPageState extends State<BookDetailPage> {
                     child: TextButton(
                       style: TextButton.styleFrom(
                         textStyle: const TextStyle(fontSize: 16)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SearchPage()));
+                      },
                       child: const Text('Buscar', style: TextStyle(color:  Color(0xFFA6A1B2))),),
                   ),
                   

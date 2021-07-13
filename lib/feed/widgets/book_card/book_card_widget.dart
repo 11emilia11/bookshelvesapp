@@ -1,3 +1,4 @@
+import 'package:bookshelvesapp/book/book_detail_page.dart';
 import 'package:bookshelvesapp/core/app_colors.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +17,23 @@ class BookCardWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         Container(
-           height: 40,
-           width: 40,
-           child: Icon(Icons.book_rounded,
-            color: Colors.teal[600]),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BookDetailPage()));
+            },
+            child: Column(
+              children: [
+                 Center(
+           child: Container(
+             height: 40,
+             width: 40,
+             child: Icon(
+               Icons.book_rounded,
+               color: Colors.blue[00],
+               size: 32),
+           ),
          ),
 
          SizedBox(
@@ -43,6 +56,10 @@ class BookCardWidget extends StatelessWidget {
          SizedBox(
             height: 20,
           ),
+
+              ],),
+          ),
+        
           
         ],
       ),
