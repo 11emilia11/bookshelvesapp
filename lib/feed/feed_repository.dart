@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bookshelvesapp/shared/models/book_model.dart';
+import 'package:bookshelvesapp/shared/models/shelf_model.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/services.dart';
 
@@ -12,10 +13,10 @@ class FeedRepository {
     return user;
   }
 
-  Future<List<BookModel>> getBooks() async {
+  Future<List<ShelfModel>> getShelves() async {
     final response = await rootBundle.loadString("assets/database/books.json");
     final list = jsonDecode(response) as List;
-    final books = list.map((e) => BookModel.fromMap(e)).toList();
+    final books = list.map((e) => ShelfModel.fromMap(e)).toList();
     return books;
   }
 

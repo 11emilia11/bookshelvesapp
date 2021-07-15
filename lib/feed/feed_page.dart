@@ -1,8 +1,11 @@
+import 'package:bookshelvesapp/book/book_detail_page.dart';
+import 'package:bookshelvesapp/feed/feed_controller.dart';
 import 'package:bookshelvesapp/feed/widgets/level_button/level_button_widget.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/feed/widgets/book_card/book_card_widget.dart';
 import 'package:bookshelvesapp/home/home_page.dart';
 import 'package:bookshelvesapp/recommendation/recommendation_page.dart';
+import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class FeedPage extends StatefulWidget {
@@ -13,10 +16,13 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
+
+  final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget( user: user,),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -54,10 +60,22 @@ class _FeedPageState extends State<FeedPage> {
 
                     crossAxisCount: 2,
                     children: [
-                      BookCardWidget(),
-                      BookCardWidget(),
-                      BookCardWidget(),
-                      BookCardWidget(),],
+                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
+                        Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BookDetailPage()));
+                      } ,),
+                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
+                         Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BookDetailPage()));
+                      },),
+                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
+                         Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BookDetailPage()));
+                      },),
+                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
+                         Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BookDetailPage()));
+                      },),],
                   ),
               ),
               Row(

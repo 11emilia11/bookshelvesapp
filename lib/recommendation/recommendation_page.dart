@@ -30,10 +30,10 @@ class _RecommendationPageState extends State<RecommendationPage> {
 
                     crossAxisCount: 2,
                     children: [
-                      BookCardWidget(),
-                      BookCardWidget(),
-                      BookCardWidget(),
-                      BookCardWidget(),],
+                       BookCardWidget(title: "1984", author: "George Orwell", onTap: () {} ,),
+                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {},),
+                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {},),
+                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {},),],
                   ),
               ),
               

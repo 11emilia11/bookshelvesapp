@@ -1,10 +1,12 @@
 import 'package:bookshelvesapp/core/app_gradients.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
 import 'package:bookshelvesapp/feed/widgets/score_card/score_card_widget.dart';
+import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
-  AppBarWidget() : super(
+  final UserModel user;
+  AppBarWidget({required this.user}) : super(
     preferredSize: Size.fromHeight(250),
     child: Container(
       height: 250,
@@ -25,7 +27,7 @@ class AppBarWidget extends PreferredSize {
                    style: AppTextStyles.title,
                    children: [
                      TextSpan(
-                       text: "Usuário :)",
+                       text: user.name,
                        style: AppTextStyles.titleBold,
                      )
                    ]

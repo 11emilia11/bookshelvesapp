@@ -4,52 +4,51 @@ import 'package:bookshelvesapp/core/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class BookCardWidget extends StatelessWidget {
-  const BookCardWidget({ Key? key }) : super(key: key);
+
+
+  final String title;
+  final String author;
+  final int rating;
+  final VoidCallback onTap;
+
+  const BookCardWidget({
+     Key? key,
+     required this.title,
+     required this.author,
+     this.rating = 0,
+     required this.onTap,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.fromBorderSide(BorderSide(color: AppColors.border)),
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(10)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BookDetailPage()));
-            },
-            child: Column(
-              children: [
-                 Center(
-           child: Container(
+    return GestureDetector(
+      onTap: onTap,
+          child: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          border: Border.fromBorderSide(BorderSide(color: AppColors.border)),
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+           Container(
              height: 40,
              width: 40,
-             child: Icon(
-               Icons.book_rounded,
-               color: Colors.blue[00],
-               size: 32),
+             child: Icon(Icons.book_rounded,color: Colors.blue[300],size: 32),
            ),
-         ),
 
-         SizedBox(
+          SizedBox(
            height: 20,
          ),
          Column(
            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
            children:[
              Text(
-           "Paris é uma Festa",
+              title,
             style: AppTextStyles.heading),
             Text(
-           "E. Hemingway",
+              author,
             style: AppTextStyles.author),
-          
-
            ]
          ),
          
@@ -57,13 +56,10 @@ class BookCardWidget extends StatelessWidget {
             height: 20,
           ),
 
-              ],),
-          ),
-        
           
-        ],
-      ),
-      
+         ]),
+      )
     );
+   
   }
 }

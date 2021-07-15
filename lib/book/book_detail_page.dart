@@ -1,6 +1,7 @@
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/search/search_page.dart';
+import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:bookshelvesapp/core/app_colors.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
@@ -11,10 +12,12 @@ class BookDetailPage extends StatefulWidget {
 }
 
 class _BookDetailPageState extends State<BookDetailPage> {
+  final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(user: user),
       body: 
         Padding(
           padding: EdgeInsets.all(8.0),
