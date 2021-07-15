@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class ScoreCardWidget extends StatelessWidget {
 
-  const ScoreCardWidget({Key key}) : super(key: key);
+  const ScoreCardWidget({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {

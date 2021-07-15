@@ -1,9 +1,9 @@
-import 'package:bookshelvesapp/register/register_page.dart';
+
 import 'package:bookshelvesapp/search/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({ Key key }) : super(key: key);
+  const SearchPage({ Key? key }) : super(key: key);
 
   @override
   _SearchPageState createState() => _SearchPageState();

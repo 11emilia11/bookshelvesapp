@@ -1,0 +1,26 @@
+[
+    {
+        "titulo": "Paris é um Festa",
+        "autor": "Ernest Hemingway",
+        "estante": "lido"
+    },
+    
+    {
+        "titulo": "O senhor das moscas",
+        "autor": "William Golding",
+        "estante": "lido"
+    },
+
+    {
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "estante": "lido"
+    },
+
+    {
+        "titulo": "Kafta à beira mar",
+        "autor": "Haruki Murakami",
+        "estante": "lido"
+    }
+
+]

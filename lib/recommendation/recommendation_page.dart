@@ -4,7 +4,7 @@ import 'package:bookshelvesapp/recommendation/widgets/rec_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class RecommendationPage extends StatefulWidget {
-  const RecommendationPage({ Key key }) : super(key: key);
+  const RecommendationPage({ Key? key }) : super(key: key);
 
   @override
   _RecommendationPageState createState() => _RecommendationPageState();

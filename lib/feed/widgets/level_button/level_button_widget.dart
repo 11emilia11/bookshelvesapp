@@ -7,8 +7,8 @@ class LevelButtonWidget extends StatelessWidget {
 
   final String label;
    LevelButtonWidget({
-    Key  key,
-      this.label,
+    Key?  key,
+      required this.label,
     }) : assert(["Lido", "Lendo", "Salvos", "Suspenso"].contains(label)),super(key: key);
   
   final config = {
@@ -38,9 +38,9 @@ class LevelButtonWidget extends StatelessWidget {
 
   };
 
-  Color get color => config[label]['color'];
-  Color get borderColor => config[label]['borderColor'];
-  Color get fontColor => config[label]['fontColor'];
+  Color get color => config[label]!['color']!;
+  Color get borderColor => config[label]!['borderColor']!;
+  Color get fontColor => config[label]!['fontColor']!;
 
   @override
   Widget build(BuildContext context) {

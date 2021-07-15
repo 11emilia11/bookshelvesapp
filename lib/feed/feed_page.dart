@@ -6,7 +6,7 @@ import 'package:bookshelvesapp/recommendation/recommendation_page.dart';
 import 'package:flutter/material.dart';
 
 class FeedPage extends StatefulWidget {
-  const FeedPage({ Key key }) : super(key: key);
+  const FeedPage({ Key? key }) : super(key: key);
 
   @override
   _FeedPageState createState() => _FeedPageState();
@@ -70,7 +70,7 @@ class _FeedPageState extends State<FeedPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                    decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
-                    border: Border.all(color: Colors.purple[300], width: 2),
+                    border: Border.all(color: Colors.purple, width: 2),
                   ),
                   child: Center(
                       child: TextButton(
