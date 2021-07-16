@@ -27,7 +27,7 @@ class BookModel {
   final String titulo;
   final String autor;
   final int rating;
-  final Estante estante;
+  Estante estante;
 
 
   BookModel({

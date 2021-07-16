@@ -7,6 +7,7 @@ import 'package:bookshelvesapp/home/home_page.dart';
 import 'package:bookshelvesapp/recommendation/recommendation_page.dart';
 import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
+import 'package:bookshelvesapp/shared/widgets/next_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class FeedPage extends StatefulWidget {
@@ -78,9 +79,10 @@ class _FeedPageState extends State<FeedPage> {
                       ],
                   ),
               ),
-              Row(
+            Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              
               
               Container(
                   height: 50.0,
@@ -130,7 +132,7 @@ class _FeedPageState extends State<FeedPage> {
                       ),
                       
                     )),
-
+                
             ],
           ), // buttons 
           ],

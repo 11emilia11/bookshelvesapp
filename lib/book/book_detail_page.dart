@@ -7,12 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:bookshelvesapp/core/app_colors.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
 
-class BookDetailPage extends StatelessWidget {
-  final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
+class BookDetailPage extends StatefulWidget {
   final BookModel book;
+  
 
   BookDetailPage({Key? key,required this.book }) : super(key: key);
 
+  @override
+  _BookDetailPageState createState() => _BookDetailPageState();
+}
+
+class _BookDetailPageState extends State<BookDetailPage> {
+  final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +43,8 @@ class BookDetailPage extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(book.titulo, style: TextStyle(fontSize:24,fontWeight: FontWeight.bold, ) ),
-                      Text(book.autor, style: TextStyle(fontSize:16,fontWeight: FontWeight.w300, )),
+                      Text(widget.book.titulo, style: TextStyle(fontSize:24,fontWeight: FontWeight.bold, ) ),
+                      Text(widget.book.autor, style: TextStyle(fontSize:16,fontWeight: FontWeight.w300, )),
                       Icon(Icons.book_rounded, size: 128,
                        color: Colors.blue[300]),
                       Row(
@@ -58,20 +64,35 @@ class BookDetailPage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Icon(Icons.bookmark_border, color: Color(0xFF57B6E5)),
+                        IconButton(onPressed: (){
+                          this.widget.book.estante = Estante.salvo;
+                        }, 
+                        icon: Icon(Icons.bookmark_border, color: Color(0xFF57B6E5))),
                         Text('Salvar',style: TextStyle(color: AppColors.black),)
                       ],
                     ),
                     Column(
                       children: [
-                        Icon(Icons.bookmark_border,  color: Colors.greenAccent[400]),
+                        IconButton(onPressed: (){
+                          this.widget.book.estante = Estante.lido;
+                        }, icon: Icon(Icons.bookmark_border, color: Colors.greenAccent[400])),
                         Text('Lido', style: TextStyle(color: AppColors.black),)
                       ],
                     ),
                     Column(
                       children: [
-                        Icon(Icons.bookmark_border, color:Color.fromRGBO(130, 87, 229, 0.695)),
+                        IconButton(onPressed: (){
+                          this.widget.book.estante = Estante.lendo;
+                        }, icon: Icon(Icons.bookmark_border, color: Color.fromRGBO(130, 87, 229, 0.695))),
                         Text('Lendo',style: TextStyle(color: AppColors.black),)
+                      ],
+                    ), 
+                    Column(
+                      children: [
+                        IconButton(onPressed: (){
+                          this.widget.book.estante = Estante.suspenso;
+                        }, icon: Icon(Icons.bookmark_border, color: Color(0xFFCC3750))),
+                        Text('Suspenso',style: TextStyle(color: AppColors.black),)
                       ],
                     ), 
                     ],),
@@ -124,5 +145,4 @@ class BookDetailPage extends StatelessWidget {
           );
     
   }
-  
 }
