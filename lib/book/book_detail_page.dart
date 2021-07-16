@@ -1,18 +1,18 @@
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/search/search_page.dart';
+import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:bookshelvesapp/core/app_colors.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
 
-class BookDetailPage extends StatefulWidget {
-  @override
-  _BookDetailPageState createState() => _BookDetailPageState();
-}
-
-class _BookDetailPageState extends State<BookDetailPage> {
+class BookDetailPage extends StatelessWidget {
   final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
+  final BookModel book;
+
+  BookDetailPage({Key? key,required this.book }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +37,10 @@ class _BookDetailPageState extends State<BookDetailPage> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('The Lord of the Flies', style: AppTextStyles.heading ),
-                      Text('William Golding', style: AppTextStyles.heading15 ),
+                      Text(book.titulo, style: TextStyle(fontSize:24,fontWeight: FontWeight.bold, ) ),
+                      Text(book.autor, style: TextStyle(fontSize:16,fontWeight: FontWeight.w300, )),
                       Icon(Icons.book_rounded, size: 128,
-                       color: AppColors.lightGrey),
+                       color: Colors.blue[300]),
                       Row(
 
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +122,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
             
             )
           );
-
-        
+    
   }
+  
 }

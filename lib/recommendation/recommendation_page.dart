@@ -1,19 +1,18 @@
+import 'package:bookshelvesapp/book/book_detail_page.dart';
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/book_card/book_card_widget.dart';
 import 'package:bookshelvesapp/recommendation/widgets/rec_app_bar.dart';
+import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:flutter/material.dart';
 
-class RecommendationPage extends StatefulWidget {
-  const RecommendationPage({ Key? key }) : super(key: key);
+class RecommendationPage extends StatelessWidget {
 
-  @override
-  _RecommendationPageState createState() => _RecommendationPageState();
-}
+  final List<BookModel> books;
+  RecommendationPage({ Key? key, required this.books}) : super(key: key);
 
-class _RecommendationPageState extends State<RecommendationPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       appBar: RecAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -30,10 +29,11 @@ class _RecommendationPageState extends State<RecommendationPage> {
 
                     crossAxisCount: 2,
                     children: [
-                       BookCardWidget(title: "1984", author: "George Orwell", onTap: () {} ,),
-                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {},),
-                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {},),
-                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {},),],
+                      for (var i = 0; i < books.length; i++) 
+                        BookCardWidget(book: books[i], onTap: () {
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i])));
+                        })],
                   ),
               ),
               
@@ -75,4 +75,6 @@ class _RecommendationPageState extends State<RecommendationPage> {
       
     );
   }
+
+  
 }

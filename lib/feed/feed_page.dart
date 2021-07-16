@@ -5,6 +5,7 @@ import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/feed/widgets/book_card/book_card_widget.dart';
 import 'package:bookshelvesapp/home/home_page.dart';
 import 'package:bookshelvesapp/recommendation/recommendation_page.dart';
+import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,14 @@ class FeedPage extends StatefulWidget {
 
 class _FeedPageState extends State<FeedPage> {
 
+  final List<BookModel> books = [
+     BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.lido),
+     BookModel(autor: "William Golding", titulo: "O senhor das moscas", rating: 0, estante: Estante.lido),
+     BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.lido),
+     BookModel(autor: "John Fowles", titulo: "O colecionador", rating: 0, estante: Estante.lido),
+     BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.lido),
+     BookModel(autor: "Min Jin Lee", titulo: "Pachinko", rating: 0, estante: Estante.lido),
+     ];
   final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
   
   @override
@@ -60,22 +69,13 @@ class _FeedPageState extends State<FeedPage> {
 
                     crossAxisCount: 2,
                     children: [
-                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
-                        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => BookDetailPage()));
-                      } ,),
-                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
-                         Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => BookDetailPage()));
-                      },),
-                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
-                         Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => BookDetailPage()));
-                      },),
-                      BookCardWidget(title: "1984", author: "George Orwell", onTap: () {
-                         Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => BookDetailPage()));
-                      },),],
+                   
+                      for (var i = 0; i < books.length; i++) 
+                        BookCardWidget(book: books[i], onTap: () {
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i])));
+                        })
+                      ],
                   ),
               ),
               Row(
@@ -98,7 +98,7 @@ class _FeedPageState extends State<FeedPage> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => RecommendationPage()),
+                            MaterialPageRoute(builder: (context) => RecommendationPage(books: books)),
                           );
                         },
                         child: const Text('Recomendações' , style: TextStyle(color: Colors.black87)),
@@ -130,8 +130,6 @@ class _FeedPageState extends State<FeedPage> {
                       ),
                       
                     )),
-                
-              
 
             ],
           ), // buttons 
