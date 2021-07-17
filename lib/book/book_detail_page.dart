@@ -1,3 +1,4 @@
+import 'package:bookshelvesapp/book/widgets/book_detail_app_bar_widget.dart';
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/search/search_page.dart';
@@ -7,23 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:bookshelvesapp/core/app_colors.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
 
-class BookDetailPage extends StatefulWidget {
+class BookDetailPage extends StatelessWidget {
   final BookModel book;
-  
+  final String nome;
 
-  BookDetailPage({Key? key,required this.book }) : super(key: key);
-
-  @override
-  _BookDetailPageState createState() => _BookDetailPageState();
-}
-
-class _BookDetailPageState extends State<BookDetailPage> {
-  final UserModel user = UserModel(uid: "Emilia", email: "example", password: "123");
+  BookDetailPage({Key? key,required this.book, required this.nome }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(user: user),
+      appBar: BookDetailAppBarWidget(user: this.nome),
       body: 
         Padding(
           padding: EdgeInsets.all(8.0),
@@ -43,8 +37,8 @@ class _BookDetailPageState extends State<BookDetailPage> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(widget.book.titulo, style: TextStyle(fontSize:24,fontWeight: FontWeight.bold, ) ),
-                      Text(widget.book.autor, style: TextStyle(fontSize:16,fontWeight: FontWeight.w300, )),
+                      Text(book.titulo, style: TextStyle(fontSize:24,fontWeight: FontWeight.bold, ) ),
+                      Text(book.autor, style: TextStyle(fontSize:16,fontWeight: FontWeight.w300, )),
                       Icon(Icons.book_rounded, size: 128,
                        color: Colors.blue[300]),
                       Row(
@@ -65,7 +59,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                     Column(
                       children: [
                         IconButton(onPressed: (){
-                          this.widget.book.estante = Estante.salvo;
+                          this.book.estante = Estante.salvo;
                         }, 
                         icon: Icon(Icons.bookmark_border, color: Color(0xFF57B6E5))),
                         Text('Salvar',style: TextStyle(color: AppColors.black),)
@@ -74,7 +68,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                     Column(
                       children: [
                         IconButton(onPressed: (){
-                          this.widget.book.estante = Estante.lido;
+                          this.book.estante = Estante.lido;
                         }, icon: Icon(Icons.bookmark_border, color: Colors.greenAccent[400])),
                         Text('Lido', style: TextStyle(color: AppColors.black),)
                       ],
@@ -82,7 +76,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                     Column(
                       children: [
                         IconButton(onPressed: (){
-                          this.widget.book.estante = Estante.lendo;
+                          this.book.estante = Estante.lendo;
                         }, icon: Icon(Icons.bookmark_border, color: Color.fromRGBO(130, 87, 229, 0.695))),
                         Text('Lendo',style: TextStyle(color: AppColors.black),)
                       ],
@@ -90,7 +84,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                     Column(
                       children: [
                         IconButton(onPressed: (){
-                          this.widget.book.estante = Estante.suspenso;
+                          this.book.estante = Estante.suspenso;
                         }, icon: Icon(Icons.bookmark_border, color: Color(0xFFCC3750))),
                         Text('Suspenso',style: TextStyle(color: AppColors.black),)
                       ],
@@ -115,7 +109,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => FeedPage()));
+                          MaterialPageRoute(builder: (context) => FeedPage(nome: this.nome,)));
                       },
                       child: const Text('Voltar', style: TextStyle(color: Colors.white)),),
                   ),
@@ -143,6 +137,6 @@ class _BookDetailPageState extends State<BookDetailPage> {
             
             )
           );
-    
-  }
+
+}
 }

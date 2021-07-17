@@ -1,13 +1,11 @@
 import 'package:bookshelvesapp/core/app_gradients.dart';
 import 'package:bookshelvesapp/core/app_text_styles.dart';
-import 'package:bookshelvesapp/feed/widgets/score_card/score_card_widget.dart';
-import 'package:bookshelvesapp/shared/models/user_model.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class AppBarWidget extends PreferredSize {
-  final String? user;
+class BookDetailAppBarWidget extends PreferredSize {
+  final String user;
   
-  AppBarWidget({required this.user}) : super(
+  BookDetailAppBarWidget({required this.user}) : super(
     preferredSize: Size.fromHeight(250),
     child: Container(
       height: 250,
@@ -39,13 +37,11 @@ class AppBarWidget extends PreferredSize {
               ],
               ),
           ),
-            Align(
-              alignment: Alignment(0.0, 1.0),
-              child: ScoreCardWidget()
-              )
+            
         ],
       )
     ),
   );
  
+
 }

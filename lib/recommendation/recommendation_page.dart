@@ -6,9 +6,9 @@ import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:flutter/material.dart';
 
 class RecommendationPage extends StatelessWidget {
-
+  final String nome;
   final List<BookModel> books;
-  RecommendationPage({ Key? key, required this.books}) : super(key: key);
+  RecommendationPage({ Key? key, required this.books, required this.nome}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class RecommendationPage extends StatelessWidget {
                       for (var i = 0; i < books.length; i++) 
                         BookCardWidget(book: books[i], onTap: () {
                           Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i])));
+                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome: this.nome)));
                         })],
                   ),
               ),
@@ -54,7 +54,7 @@ class RecommendationPage extends StatelessWidget {
                         onPressed: () {
                          Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => FeedPage()));
+                            MaterialPageRoute(builder: (context) => FeedPage(nome: this.nome)));
                         },
                         child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
                                

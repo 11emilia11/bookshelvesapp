@@ -17,12 +17,6 @@ class _RegisterPageState extends State<RegisterPage> {
   String password = ' ';
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController nameController = TextEditingController();
-
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     
                     try {
                       UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-
+                      
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
                         print('A senha é muito fraca');
@@ -107,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => FeedPage()));}
+                    MaterialPageRoute(builder: (context) => FeedPage(nome: name)));}
 
                 },
                 child: Container(

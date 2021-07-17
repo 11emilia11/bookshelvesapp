@@ -3,6 +3,7 @@ import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/home/widgets/home_app_bar.dart';
 import 'package:bookshelvesapp/register/register_page.dart';
 import 'package:bookshelvesapp/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,9 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  final AuthService _auth = AuthService();
-
   String email = ' ';
   String password = ' ';
   final _formKey = GlobalKey<FormState>();
@@ -56,11 +54,22 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () async {
                         if(_formKey.currentState!.validate()){
-                          print(email);
-                          print(password);
+                          try {
+                            UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                              email: email,
+                              password: password,
+                            );
+                          } on FirebaseAuthException catch (e) {
+                            if (e.code == 'user-not-found') {
+                              print('Nenhum usuário com este e-mail');
+                            } else if (e.code == 'wrong-password') {
+                              print('Senha incorreta.');
+                            }
+                          }
+                          
                           Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => FeedPage()));
+                          MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
 
                         }
                        
@@ -110,7 +119,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                         
                       )),),
-                 GestureDetector(
+                
+
+                ],)
+    
+                /*
+ GestureDetector(
                     onTap: () async {
                       print('TAPPED');
                      
@@ -136,11 +150,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                         
                       )),),
-
-                ],)
-    
-                /*
-
                      
                 Container(
                   padding: EdgeInsets.all(10),
