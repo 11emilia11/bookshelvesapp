@@ -27,7 +27,7 @@ class AppBarWidget extends PreferredSize {
                    style: AppTextStyles.title,
                    children: [
                      TextSpan(
-                       text: user.name,
+                       text: user.uid,
                        style: AppTextStyles.titleBold,
                      )
                    ]

@@ -19,7 +19,7 @@ class FeedPage extends StatefulWidget {
 
 class _FeedPageState extends State<FeedPage> {
 
-  final List<BookModel> books = [
+  List<BookModel> books = [
      BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.lido),
      BookModel(autor: "William Golding", titulo: "O senhor das moscas", rating: 0, estante: Estante.lido),
      BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.lido),
@@ -27,7 +27,7 @@ class _FeedPageState extends State<FeedPage> {
      BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.lido),
      BookModel(autor: "Min Jin Lee", titulo: "Pachinko", rating: 0, estante: Estante.lido),
      ];
-  final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
+  final UserModel user = UserModel(uid: "Emilia", email:"email@example.com", password: "123");
   
   @override
   Widget build(BuildContext context) {
@@ -72,10 +72,12 @@ class _FeedPageState extends State<FeedPage> {
                     children: [
                    
                       for (var i = 0; i < books.length; i++) 
-                        BookCardWidget(book: books[i], onTap: () {
-                          Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i])));
-                        })
+                        if (books[i].estante == Estante.lido)
+                          BookCardWidget(book: books[i], onTap: () {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i])));
+                            
+                          })
                       ],
                   ),
               ),

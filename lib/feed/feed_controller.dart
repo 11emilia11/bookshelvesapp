@@ -6,6 +6,7 @@ import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class FeedController {
+  /*
   final stateNotifier = ValueNotifier<FeedState>(FeedState.empty);
 
     set state(FeedState state) => stateNotifier.value = state;
@@ -29,6 +30,6 @@ class FeedController {
 
       
     }
-
+*/
 
 }

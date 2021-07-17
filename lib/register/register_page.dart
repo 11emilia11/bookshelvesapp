@@ -1,7 +1,9 @@
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/home/home_page.dart';
 import 'package:bookshelvesapp/register/widgets/register_app_bar.dart';
+import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -9,6 +11,12 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
+  String name = ' ';
+  String email = ' ';
+  String password = ' ';
+  final _formKey = GlobalKey<FormState>();
+
   TextEditingController nameController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
@@ -19,7 +27,116 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: RegisterAppBar(),
+      body: Padding(
+        //padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        padding: EdgeInsets.all(20),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: <Widget>[
+              SizedBox(height: 20.0),
+              Text('Digite seu nome'),
+              TextFormField(
+                validator: (val) => val!.isEmpty ? 'Digite seu nome' : null,
+                onChanged: (val) {
+                  setState(() => email = val);
+                },
+              ),
+              SizedBox(height: 20.0),
+              Text('Digite seu e-mail'),
+              TextFormField(
+                validator: (val) => val!.isEmpty ? 'Digite seu e-mail' : null,
+                onChanged: (val) {
+                  setState(() => email = val);
+                },
+              ),
+              SizedBox(height: 20.0),
+              Text('Digite sua senha'),
+              TextFormField(
+                obscureText: true,
+                validator: (val) => val!.length < 6 ? 'A senha precisa ter 6 dígitos ao menos' : null,
+                onChanged: (val) {
+                  setState(() => password = val);
+                },),
+                SizedBox(height: 20.0),
+                GestureDetector(
+                  onTap: () async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                    
+                    }
+                    
+                  ,
+                  child: Container(
+                  height: 50.0,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color:  Color(0xFF04D361),
+                  ),
+                  child: Center(
+                      child: Text(
+                        'Voltar',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                        ), 
+                      ),
+                      
+                    )),
+              ),
 
+            GestureDetector(
+                onTap: () async {
+                  if(_formKey.currentState!.validate()){
+                    
+                    try {
+                      UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'weak-password') {
+                        print('A senha é muito fraca');
+                      } else if (e.code == 'email-already-in-use') {
+                        print('Uma conta já existe para este e-mail.');
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
+
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FeedPage()));}
+
+                },
+                child: Container(
+                height: 50.0,
+                padding: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  border: Border.all(color: Color(0xFF04D361), width: 2),
+                  
+                ),
+                child: Center(
+                    child: Text(
+                      'Cadastrar',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                      ), 
+                    ),
+                    
+                  )),),
+
+
+            ],))));
+
+  }
+}
+
+    /*
       body: Padding(
         padding:const EdgeInsets.all(8.0),
         child: ListView(
@@ -31,10 +148,15 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 padding: EdgeInsets.all(8),
                 child: TextField(
+                    onChanged: (val) {
+                      setState(() => name = val);
+                    },
+                    
                     controller: nameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Nome',
+                      
                     )
                   ),
               ),
@@ -44,6 +166,9 @@ class _RegisterPageState extends State<RegisterPage> {
                  Container(
                 padding: EdgeInsets.all(8),
                 child: TextField(
+                    onChanged: (val) {
+                      setState(() => email = val);
+                    },
                     controller: emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -57,6 +182,9 @@ class _RegisterPageState extends State<RegisterPage> {
                  Container(
                 padding: EdgeInsets.all(8),
                 child: TextField(
+                    onChanged: (val) {
+                      setState(() => password = val);
+                    },
                     obscureText: true,
                     controller: passwordController,
                     decoration: InputDecoration(
@@ -72,54 +200,65 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               
-              Container(
-                  height: 50.0,
-                  padding: const EdgeInsets.all(8.0),
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    border: Border.all(color: Color(0xFF04D361), width: 2),
-                  ),
-                  child: Center(
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 15),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
+              GestureDetector(
+                    onTap: () {
+                      Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => HomePage()));
-                        },
-                        child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
-                               
-                      ),
-                      
-                    )),
-               Container(
-                  height: 50.0,
-                  padding: const EdgeInsets.all(8.0),
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-
-                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    color:  Color(0xFF04D361),
-                  ),
-                  child: Center(
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 15),
+                    },
+                    child: Container(
+                    height: 50.0,
+                    padding: const EdgeInsets.all(8.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      border: Border.all(color: Color(0xFF04D361), width: 2),
+                    ),
+                    child: Center(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 15),
+                          ),
+                          onPressed: () {
+                            
+                          },
+                          child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
+                                 
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => FeedPage())
-                          );
-                        },
-                        child: const Text('Login', style: TextStyle(color: Colors.white)),
-                               
-                      ),
-                      
-                    )),
+                        
+                      )),
+              ),
+               GestureDetector(
+                 onTap: () {
+
+                   
+                 },
+                 child: Container(
+                    height: 50.0,
+                    padding: const EdgeInsets.all(8.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      color:  Color(0xFF04D361),
+                    ),
+                    child: Center(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            textStyle: const TextStyle(fontSize: 15),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => FeedPage())
+                            );
+                          },
+                          child: const Text('Login', style: TextStyle(color: Colors.white)),
+                                
+                        ),
+                        
+                      )),
+               ),
                 
               
 
@@ -133,4 +272,4 @@ class _RegisterPageState extends State<RegisterPage> {
       
     );
   }
-}
+  */

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "34429274805",
+    "project_id": "bookshelvesapp-4ad5a",
+    "storage_bucket": "bookshelvesapp-4ad5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34429274805:android:49cdc9431f16e94a938cfc",
+        "android_client_info": {
+          "package_name": "com.fpaemilia.bookshelvesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34429274805-b4opjrdrh78phdvjc1k2j370dfic3pdo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT8pcKSAgva3fpejWJyeB72IJpRUhhbnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34429274805-b4opjrdrh78phdvjc1k2j370dfic3pdo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

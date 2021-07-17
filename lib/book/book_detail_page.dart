@@ -18,7 +18,7 @@ class BookDetailPage extends StatefulWidget {
 }
 
 class _BookDetailPageState extends State<BookDetailPage> {
-  final UserModel user = UserModel(name: "Emilia", email: "example@gmail.com", password: "123456");
+  final UserModel user = UserModel(uid: "Emilia", email: "example", password: "123");
 
   @override
   Widget build(BuildContext context) {

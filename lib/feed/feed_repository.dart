@@ -6,7 +6,7 @@ import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/services.dart';
 
 class FeedRepository {
-
+ /*
   Future<UserModel> getUser() async {
     final response = await rootBundle.loadString("assets/database/users.json");
     final user = UserModel.fromJson(response);
@@ -19,5 +19,5 @@ class FeedRepository {
     final books = list.map((e) => ShelfModel.fromMap(e)).toList();
     return books;
   }
-
+*/
 }

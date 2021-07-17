@@ -3,14 +3,19 @@ import 'package:bookshelvesapp/core/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LevelButtonWidget extends StatelessWidget {
+class LevelButtonWidget extends StatefulWidget {
 
   final String label;
    LevelButtonWidget({
     Key?  key,
       required this.label,
     }) : assert(["Lido", "Lendo", "Salvos", "Suspenso"].contains(label)),super(key: key);
-  
+
+  @override
+  _LevelButtonWidgetState createState() => _LevelButtonWidgetState();
+}
+
+class _LevelButtonWidgetState extends State<LevelButtonWidget> {
   final config = {
     "Lido": {
       "color": AppColors.levelButtonFacil,
@@ -38,30 +43,37 @@ class LevelButtonWidget extends StatelessWidget {
 
   };
 
-  Color get color => config[label]!['color']!;
-  Color get borderColor => config[label]!['borderColor']!;
-  Color get fontColor => config[label]!['fontColor']!;
+  Color get color => config[widget.label]!['color']!;
+
+  Color get borderColor => config[widget.label]!['borderColor']!;
+
+  Color get fontColor => config[widget.label]!['fontColor']!;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color,
-        border: Border.fromBorderSide(BorderSide(
-          color: borderColor)),
+    return GestureDetector(
+      onTap: () {
         
-        borderRadius: BorderRadius.circular(28)
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 6),
-        child: Text(
-          label,
-          style: GoogleFonts.notoSans(
-            color: fontColor, fontSize: 13),
+      },
+          child: Container(
+        decoration: BoxDecoration(
+          color: color,
+          border: Border.fromBorderSide(BorderSide(
+            color: borderColor)),
           
+          borderRadius: BorderRadius.circular(28)
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 6),
+          child: Text(
+            widget.label,
+            style: GoogleFonts.notoSans(
+              color: fontColor, fontSize: 13),
+            
 
-          ),
-      ),
-      );
+            ),
+        ),
+        ),
+    );
   }
 }
