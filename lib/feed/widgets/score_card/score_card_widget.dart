@@ -4,8 +4,9 @@ import 'package:bookshelvesapp/feed/widgets/chart/chart_widget.dart';
 import 'package:flutter/material.dart';
 
 class ScoreCardWidget extends StatelessWidget {
-
-  const ScoreCardWidget({Key? key}) : super(key: key);
+  final int lidos;
+  final int total;
+  const ScoreCardWidget({ required this.lidos, required this.total,Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class ScoreCardWidget extends StatelessWidget {
             children: [
               Expanded(
                   flex: 1,
-                  child: ChartWidget()
+                  child: ChartWidget(lidos: lidos, total: total)
               ),
               Expanded(
                   flex: 3,
@@ -37,7 +38,7 @@ class ScoreCardWidget extends StatelessWidget {
                           "Seu score de leitura", 
                           style: AppTextStyles.heading),
                         Text(
-                          "Você leu 5 livros até agora, continue assim.",
+                          "Você leu ${lidos} livros até agora dos ${total} nas estantes, continue assim.",
                           style: AppTextStyles.body)
                         ],
                 ),

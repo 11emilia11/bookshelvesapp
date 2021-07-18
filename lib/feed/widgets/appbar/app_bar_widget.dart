@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
   final String? user;
+  final int lidos;
+  final int total;
   
-  AppBarWidget({required this.user}) : super(
+  AppBarWidget({required this.user, required this.lidos, required this.total}) : super(
     preferredSize: Size.fromHeight(250),
     child: Container(
       height: 250,
@@ -41,7 +43,7 @@ class AppBarWidget extends PreferredSize {
           ),
             Align(
               alignment: Alignment(0.0, 1.0),
-              child: ScoreCardWidget()
+              child: ScoreCardWidget(lidos:lidos, total: total )
               )
         ],
       )

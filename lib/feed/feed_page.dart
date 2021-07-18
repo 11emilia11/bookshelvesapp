@@ -28,20 +28,21 @@ class FeedPage extends StatefulWidget {
 class _FeedPageState extends State<FeedPage> {
 
   Estante filter = Estante.salvo;
+ 
 
   List<BookModel> books = [
       BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.lido),
       BookModel(autor: "William Golding", titulo: "O senhor das moscas", rating: 0, estante: Estante.lido),
       BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.lendo),
       BookModel(autor: "John Fowles", titulo: "O colecionador", rating: 0, estante: Estante.salvo),
-      BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.suspenso),
+      BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.lendo),
       BookModel(autor: "Min Jin Lee", titulo: "Pachinko", rating: 0, estante: Estante.lido),
       ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget( user: widget.nome),
+      appBar: AppBarWidget( user: widget.nome, lidos: books.where((element) => element.estante == Estante.lido).length, total : books.length),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -52,6 +53,16 @@ class _FeedPageState extends State<FeedPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+
+                 NextButtonWidget.orange(
+                  label: "Salvos",
+                  onTap: () {
+                    setState(() {
+                      filter = Estante.salvo;
+                    });
+                  },
+                ),
+
                 NextButtonWidget.purple(
                   label: "Lido",
                   onTap: () {
@@ -72,15 +83,7 @@ class _FeedPageState extends State<FeedPage> {
                   },
                 ),
 
-                NextButtonWidget.orange(
-                  label: "Salvos",
-                  onTap: () {
-                    setState(() {
-                      filter = Estante.salvo;
-                    });
-                  },
-                ),
-
+               
                 NextButtonWidget.red(
                   label: "Suspenso",
                   onTap: () {

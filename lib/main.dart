@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       title: "Bookshelves",
-      home: HomePage()
+      home: FeedPage(nome: 'Emilia')
     );
   }
 }
