@@ -1,26 +1,25 @@
 import 'package:bookshelvesapp/shared/models/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
 class AuthService {
-
-  /*
-  final Firebase _auth = Firebase.instance;
-
-
   // create user obj based on firebase user
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  UserModel? _userFromFireBase(FirebaseUser user) { 
+
+  UserModel? _userFromFireBase(User user) { 
+    //UserModel user = UserModel(uid: uid, email: email, password: password);
     return user != null ? UserModel(uid: user.uid) : null;
   }
 
   // sign in anon
-  Future signInAnon() async {
+  Future signInwithEmailandPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser? user = result.user;
-      return _userFromFireBase(user);
+      UserCredential result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      User? user = result.user;
+      return user;
     } catch(e) {
       print(e.toString());
       return null;
@@ -33,5 +32,5 @@ class AuthService {
   // register with email and password
 
   // sign out
-*/
+
 }

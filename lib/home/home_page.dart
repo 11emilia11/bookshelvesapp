@@ -15,9 +15,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String error = ' ';
   String email = ' ';
   String password = ' ';
   final _formKey = GlobalKey<FormState>();
+  final AuthService _auth = AuthService();
 
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -27,13 +29,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: HomeAppBar(),
 
-        body: Padding(
+        body: 
+        
+        Padding(
             //padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
             padding: EdgeInsets.all(20),
             child: Form(
               key: _formKey,
               child: ListView(
                 children: <Widget>[
+                  
                   SizedBox(height: 20.0),
                   Text('Digite seu e-mail'),
                   TextFormField(
@@ -51,9 +56,26 @@ class _HomePageState extends State<HomePage> {
                       setState(() => password = val);
                     },),
                     SizedBox(height: 20.0),
+                    Text(error),
+                    SizedBox(height: 20.0),
                     GestureDetector(
                       onTap: () async {
+                        int i = 0;
                         if(_formKey.currentState!.validate()){
+                          dynamic result = await _auth.signInwithEmailandPassword(email, password);
+                          if (result == null) {
+                            i += 1;
+                            setState(() {
+                              error = 'E-mail ou senha incorretos';
+                            });
+                          } else if (i == 0) {
+                             Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
+
+                          }
+
+                          /*
                           try {
                             UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                               email: email,
@@ -61,15 +83,28 @@ class _HomePageState extends State<HomePage> {
                             );
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
-                              print('Nenhum usuário com este e-mail');
+                            
+                              setState(() => error = 'Nenhum usuário com esse e-mail :/');
+                              
+                              i += 1;
                             } else if (e.code == 'wrong-password') {
-                              print('Senha incorreta.');
+                              
+                              setState(() => error = 'Senha incorreta :/');
+
+                              i += 1;
+                              
                             }
                           }
-                          
-                          Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
+                          if (i == 0) {
+                             
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
+
+                          }
+                          */
+
+                         
 
                         }
                        
@@ -119,6 +154,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                         
                       )),),
+                  
+                     // 
                 
 
                 ],)
@@ -200,8 +237,11 @@ class _HomePageState extends State<HomePage> {
                       
                     )),*/
               
-            ))
+            ),
+            ),
+            
       
     );
+ 
   }
 }
