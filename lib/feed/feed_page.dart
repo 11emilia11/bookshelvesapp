@@ -12,9 +12,23 @@ import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:bookshelvesapp/shared/widgets/next_button_widget.dart';
 
-class FeedPage extends StatelessWidget {
+class FeedPage extends StatefulWidget {
   final String nome;
-  final List<BookModel> books = [
+  
+
+  FeedPage({
+    required this.nome,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _FeedPageState createState() => _FeedPageState();
+}
+
+class _FeedPageState extends State<FeedPage> {
+  String filter = 'salvos';
+
+  List<BookModel> books = [
       BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.lido),
       BookModel(autor: "William Golding", titulo: "O senhor das moscas", rating: 0, estante: Estante.lido),
       BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.lido),
@@ -22,15 +36,11 @@ class FeedPage extends StatelessWidget {
       BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.lido),
       BookModel(autor: "Min Jin Lee", titulo: "Pachinko", rating: 0, estante: Estante.lido),
       ];
-  FeedPage({
-    required this.nome,
-    Key? key,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget( user: nome),
+      appBar: AppBarWidget( user: widget.nome),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -41,20 +51,25 @@ class FeedPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                LevelButtonWidget(
+                NextButtonWidget.purple(
                   label: "Lido",
+                  onTap: () {},
+                  
                 ),
 
-                LevelButtonWidget(
+                NextButtonWidget.green(
                   label: "Lendo",
+                  onTap: () {},
                 ),
 
-                LevelButtonWidget(
+                NextButtonWidget.orange(
                   label: "Salvos",
+                  onTap: () {},
                 ),
 
-                LevelButtonWidget(
+                NextButtonWidget.red(
                   label: "Suspenso",
+                  onTap: () {},
                 ),
               ],
               ),
@@ -73,7 +88,7 @@ class FeedPage extends StatelessWidget {
                         if (books[i].estante == Estante.lido)
                           BookCardWidget(book: books[i], onTap: () {
                             Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome:this.nome)));
+                            MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome:this.widget.nome)));
                             
                           })
                       ],
@@ -105,7 +120,7 @@ class FeedPage extends StatelessWidget {
                         onPressed: () {
                            Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => RecommendationPage(books: books, nome: this.nome,)),
+                              MaterialPageRoute(builder: (context) => RecommendationPage(books: books, nome: this.widget.nome,)),
                             );
                           
                         },

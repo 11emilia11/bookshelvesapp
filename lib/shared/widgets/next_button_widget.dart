@@ -7,6 +7,7 @@ class NextButtonWidget extends StatelessWidget {
   final Color backgrounColor;
   final Color fontColor;
   final Color borderColor;
+  bool pressed = false;
   final VoidCallback onTap;
   NextButtonWidget({
     required this.label,
@@ -16,53 +17,59 @@ class NextButtonWidget extends StatelessWidget {
     required this.onTap,
     });
 
+    NextButtonWidget.purple({required String label, required VoidCallback onTap}) 
+      : this.backgrounColor =  AppColors.levelButtonFacil,
+        this.fontColor = AppColors.levelButtonTextFacil,
+        this.borderColor = AppColors.levelButtonBorderFacil,
+        this.onTap = onTap,
+        this.label = label;
     NextButtonWidget.green({required String label, required VoidCallback onTap,}) 
-          : this.backgrounColor = AppColors.darkGreen,
-            this.fontColor = AppColors.white,
-            this.borderColor = AppColors.green,
+          : this.backgrounColor = AppColors.levelButtonMedio,
+            this.fontColor = AppColors.levelButtonTextMedio,
+            this.borderColor =  AppColors.levelButtonBorderMedio,
             this.onTap = onTap,
             this.label = label;
 
-    NextButtonWidget.white({required String label, required VoidCallback onTap}) 
-          : this.backgrounColor = AppColors.white,
-            this.fontColor = AppColors.grey,
-            this.borderColor = AppColors.border,
+    NextButtonWidget.orange({required String label, required VoidCallback onTap}) 
+          : this.backgrounColor = AppColors.levelButtonDificil,
+            this.fontColor = AppColors.levelButtonTextDificil,
+            this.borderColor = AppColors.levelButtonBorderDificil,
             this.onTap = onTap,
             this.label = label;
 
     NextButtonWidget.red({required String label, required VoidCallback onTap}) 
-          : this.backgrounColor = AppColors.darkRed,
-            this.fontColor = AppColors.red,
-            this.borderColor = AppColors.border,
+          : this.backgrounColor =AppColors.levelButtonPerito,
+            this.fontColor =  AppColors.levelButtonTextPerito,
+            this.borderColor = AppColors.levelButtonBorderPerito,
             this.onTap = onTap,
             this.label = label;
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 48,
-      child: TextButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-            backgrounColor,
-          ),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10)
-          )),
-          side: 
-            MaterialStateProperty.all(BorderSide(
-              color: borderColor
-              )),
+    return  GestureDetector(
+      onTap: onTap,
+          child: Container(
+        decoration: BoxDecoration(
+          color: backgrounColor,
+          border: Border.fromBorderSide(BorderSide(
+            color: borderColor)),
+          
+          borderRadius: BorderRadius.circular(28)
         ),
-        onPressed: onTap,
-        child: Text(
-          label,
-          style: GoogleFonts.notoSans(
-            fontWeight: FontWeight.w600,
-            fontSize: 15,
-            color: fontColor,
-          ),
-          )),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 6),
+          child: Text(
+            label,
+            style: GoogleFonts.notoSans(
+              color: fontColor, fontSize: 13),
+            
+
+            ),
+        ),
+        ),
     );
+    
   }
 }

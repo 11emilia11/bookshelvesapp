@@ -76,38 +76,7 @@ class _HomePageState extends State<HomePage> {
                               context,
                               MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
 
-                          }
-
-                          /*
-                          try {
-                            UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                              email: email,
-                              password: password,
-                            );
-                          } on FirebaseAuthException catch (e) {
-                            if (e.code == 'user-not-found') {
-                            
-                              setState(() => error = 'Nenhum usuário com esse e-mail :/');
-                              
-                              i += 1;
-                            } else if (e.code == 'wrong-password') {
-                              
-                              setState(() => error = 'Senha incorreta :/');
-
-                              i += 1;
-                              
-                            }
-                          }
-                          if (i == 0) {
-                             
-                            Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
-
-                          }
-                          */
-
-                         
+                          }                       
 
                         }
                        

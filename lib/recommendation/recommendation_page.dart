@@ -38,29 +38,35 @@ class RecommendationPage extends StatelessWidget {
               ),
               
                 
-              Container(
-                  height: 50.0,
-                  padding: const EdgeInsets.all(8.0),
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    border: Border.all(color: Color(0xFF04D361), width: 2),
-                  ),
-                  child: Center(
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 15),
-                        ),
-                        onPressed: () {
-                         Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => FeedPage(nome: this.nome)));
-                        },
-                        child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
-                               
+              GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FeedPage(nome: this.nome)));
+
+                    },
+                    child: Container(
+                      height: 50.0,
+                      padding: const EdgeInsets.all(8.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.0),
+                        border: Border.all(color: Color(0xFF04D361), width: 2),
                       ),
-                      
-                    )),
+                      child: Center(
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 15),
+                            ),
+                            onPressed: () {
+                            
+                            },
+                            child: const Text('Voltar' , style: TextStyle(color: Colors.grey)),
+                                  
+                          ),
+                          
+                        )),
+              ),
                
                       
                   
