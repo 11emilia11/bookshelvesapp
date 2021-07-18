@@ -1,6 +1,7 @@
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/home/home_page.dart';
 import 'package:bookshelvesapp/register/widgets/register_app_bar.dart';
+import 'package:bookshelvesapp/services/auth.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,7 +16,9 @@ class _RegisterPageState extends State<RegisterPage> {
   String name = ' ';
   String email = ' ';
   String password = ' ';
+  String error = ' ';
   final _formKey = GlobalKey<FormState>();
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   setState(() => password = val);
                 },),
                 SizedBox(height: 20.0),
+                Text(error, style: TextStyle(color: Colors.red),),
+                SizedBox(height: 20.0),
                 GestureDetector(
                   onTap: () async {
                     Navigator.push(
@@ -84,8 +89,27 @@ class _RegisterPageState extends State<RegisterPage> {
 
             GestureDetector(
                 onTap: () async {
+                  int i = 0;
                   if(_formKey.currentState!.validate()){
-                    
+                    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                          if (result == null) {
+                            i += 1;
+                            setState(() {
+                              error = 'Forneça um e-mail válido';
+                            });
+                          } else if (i == 0) {
+                            setState(() {
+                              error = '';
+                            });
+                             Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
+
+                          }
+
+
+
+                    /*
                     try {
                       UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
                       
@@ -102,8 +126,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => FeedPage(nome: name)));}
-
-                },
+*/
+                }},
                 child: Container(
                 height: 50.0,
                 padding: const EdgeInsets.all(8.0),

@@ -51,12 +51,12 @@ class _HomePageState extends State<HomePage> {
                   Text('Digite sua senha'),
                   TextFormField(
                     obscureText: true,
-                    validator: (val) => val!.length < 6 ? 'A senha precisa ter 6 dígitos ao menos' : null,
+                    validator: (val) => val!.isEmpty ? 'Digite sua senha' : null,
                     onChanged: (val) {
                       setState(() => password = val);
                     },),
                     SizedBox(height: 20.0),
-                    Text(error),
+                    Text(error, style: TextStyle(color: Colors.red),),
                     SizedBox(height: 20.0),
                     GestureDetector(
                       onTap: () async {
@@ -69,6 +69,9 @@ class _HomePageState extends State<HomePage> {
                               error = 'E-mail ou senha incorretos';
                             });
                           } else if (i == 0) {
+                            setState(() {
+                              error = '';
+                            });
                              Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
