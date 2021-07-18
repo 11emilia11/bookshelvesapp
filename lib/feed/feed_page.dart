@@ -26,14 +26,15 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  String filter = 'salvos';
+
+  Estante filter = Estante.salvo;
 
   List<BookModel> books = [
       BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.lido),
       BookModel(autor: "William Golding", titulo: "O senhor das moscas", rating: 0, estante: Estante.lido),
-      BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.lido),
-      BookModel(autor: "John Fowles", titulo: "O colecionador", rating: 0, estante: Estante.lido),
-      BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.lido),
+      BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.lendo),
+      BookModel(autor: "John Fowles", titulo: "O colecionador", rating: 0, estante: Estante.salvo),
+      BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.suspenso),
       BookModel(autor: "Min Jin Lee", titulo: "Pachinko", rating: 0, estante: Estante.lido),
       ];
 
@@ -53,23 +54,41 @@ class _FeedPageState extends State<FeedPage> {
               children: [
                 NextButtonWidget.purple(
                   label: "Lido",
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      filter = Estante.lido;
+                    });
+                  },
                   
                 ),
 
                 NextButtonWidget.green(
                   label: "Lendo",
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      filter = Estante.lendo;
+                    });
+
+                  },
                 ),
 
                 NextButtonWidget.orange(
                   label: "Salvos",
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      filter = Estante.salvo;
+                    });
+                  },
                 ),
 
                 NextButtonWidget.red(
                   label: "Suspenso",
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      filter = Estante.suspenso;
+                    });
+                    
+                  },
                 ),
               ],
               ),
@@ -85,7 +104,7 @@ class _FeedPageState extends State<FeedPage> {
                     children: [
                    
                       for (var i = 0; i < books.length; i++) 
-                        if (books[i].estante == Estante.lido)
+                        if (books[i].estante == filter)
                           BookCardWidget(book: books[i], onTap: () {
                             Navigator.push(context,
                             MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome:this.widget.nome)));
