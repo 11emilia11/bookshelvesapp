@@ -1,21 +1,12 @@
 import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
 class DatabaseService {
   final String? uid;
   
   DatabaseService({this.uid});
 
-  final booksRef = FirebaseFirestore.instance.collection("books1").withConverter<BookModel>(
-    fromFirestore: (snapshot, _) => BookModel.fromJson(snapshot.data()!),
-    toFirestore: (book, _) => book.toJson(),
-    );
-
-  final CollectionReference booksCollection = FirebaseFirestore.instance.collection("books");
-
-
+  // Cria um livro no firebase usando a coleção passada como parâmetro e usando o titulo como id
   Future<void> updateUserData(String nome, String autor, int rating, String estante, CollectionReference booksCollection) async {
     return await booksCollection.doc(nome).set({
       'titulo': nome,
@@ -26,14 +17,7 @@ class DatabaseService {
     });
   }
 
-  
-  Stream<QuerySnapshot> readBooks() {
-    return booksCollection.snapshots();
-  }
-
-
-
-
+  // Atualiza estante do livro
   Future<void> updateBook(String col,String titulo, Estante estante) {
     return FirebaseFirestore.instance.collection(col).doc(titulo)
     .update({'estante': estante.parse})

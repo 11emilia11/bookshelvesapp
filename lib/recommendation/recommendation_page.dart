@@ -2,6 +2,7 @@ import 'package:bookshelvesapp/book/book_detail_page.dart';
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/book_card/book_card_widget.dart';
 import 'package:bookshelvesapp/recommendation/widgets/rec_app_bar.dart';
+import 'package:bookshelvesapp/services/auth.dart';
 import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class RecommendationPage extends StatelessWidget {
                       for (var i = 0; i < books.length; i++) 
                         BookCardWidget(book: books[i], onTap: () {
                           Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome: this.nome, uid:"books5")));
+                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome: this.nome, uid:"${AuthService().email_auth}")));
                         })],
                   ),
               ),

@@ -2,6 +2,7 @@ import 'package:bookshelvesapp/book/widgets/book_detail_app_bar_widget.dart';
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/search/search_page.dart';
+import 'package:bookshelvesapp/services/auth.dart';
 import 'package:bookshelvesapp/services/database.dart';
 import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
@@ -21,8 +22,7 @@ class BookDetailPage extends StatefulWidget {
 }
 
 class _BookDetailPageState extends State<BookDetailPage> {
-  
-  //String estante = 'padrao';
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                         
                         children: [
                           Icon(Icons.star, color: Colors.yellow,),
-                          Text('3', style: AppTextStyles.body)
+                          Text(widget.book.rating.toString(), style: AppTextStyles.body)
 
                       ],)],
                   ),),
@@ -73,7 +73,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                             widget.book.estante = Estante.salvo;
                           });
                           final DatabaseService _dbservice = DatabaseService();
-                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
+                          _dbservice.updateBook(AuthService().authinstance.currentUser!.email!,widget.book.titulo, widget.book.estante);
                         }, 
                         icon: Icon(
                           (widget.book.estante == Estante.salvo) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
@@ -89,7 +89,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 
                           });
                           final DatabaseService _dbservice = DatabaseService();
-                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
+                          _dbservice.updateBook(AuthService().authinstance.currentUser!.email!,widget.book.titulo, widget.book.estante);
                          
                         }, icon: Icon(
                           (widget.book.estante == Estante.lido) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
@@ -104,7 +104,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                             widget.book.estante = Estante.lendo;
                           });
                           final DatabaseService _dbservice = DatabaseService();
-                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
+                          _dbservice.updateBook(AuthService().authinstance.currentUser!.email!,widget.book.titulo, widget.book.estante);
 
                         }, icon: Icon(
                            (widget.book.estante == Estante.lendo) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
@@ -121,8 +121,8 @@ class _BookDetailPageState extends State<BookDetailPage> {
                             widget.book.estante =  Estante.suspenso;
                           });
                          final DatabaseService _dbservice = DatabaseService();
-                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
-                          
+                          _dbservice.updateBook(AuthService().authinstance.currentUser!.email!,widget.book.titulo, widget.book.estante);
+
                         }, icon: Icon(
                           (widget.book.estante ==  Estante.suspenso) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
                           color: Color(0xFFCC3750))),
@@ -139,7 +139,6 @@ class _BookDetailPageState extends State<BookDetailPage> {
                 children: [
                   Container(
                     margin: EdgeInsets.all(8),
-                    //padding: const EdgeInsets.only(left: 128, right: 128, top: 4, bottom: 4),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),
                     
                    color: AppColors.darkGreen ),
@@ -156,7 +155,6 @@ class _BookDetailPageState extends State<BookDetailPage> {
                   
                   Container(
                    margin: EdgeInsets.all(8),
-                   //padding: const EdgeInsets.only(left: 128, right: 128, top: 4, bottom: 4),
                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),
                    border: Border.all(width: 1, color:  Color(0xFFE1E1E6)),
                    color:Colors.white),

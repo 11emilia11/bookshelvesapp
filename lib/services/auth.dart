@@ -10,27 +10,22 @@ class AuthService {
   // create user obj based on firebase user
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  int cont = 5;
+  var email_auth = 'example';
   
-  final List<BookModel> books = [
-      BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.salvo),
-      BookModel(autor: "William Golding", titulo: "O senhor das moscas", rating: 0, estante: Estante.salvo),
-      BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.salvo),
-      BookModel(autor: "John Fowles", titulo: "O colecionador", rating: 0, estante: Estante.salvo),
-      BookModel(autor: "Milan Kundera", titulo: "Identidade", rating: 0, estante: Estante.salvo),
-      BookModel(autor: "Min Jin Lee", titulo: "Pachinko", rating: 0, estante: Estante.salvo),
-  ];
-
-  int get numUsers  {
-    return cont;
+  String get emailuser  {
+    return email_auth;
   }
 
+  FirebaseAuth get authinstance {
+    return _auth;
+  }
+  
   UserModel? _userFromFireBase(User user) { 
     //UserModel user = UserModel(uid: uid, email: email, password: password);
     return user != null ? UserModel(uid: user.uid) : null;
   }
 
-  // sign in anon
+  // sign in with email and password
   Future signInwithEmailandPassword(String email, String password) async {
     try {
       UserCredential result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
@@ -43,14 +38,17 @@ class AuthService {
     }
   }
 
-  // sign in with emaik and password
+  //register with email and password
 
-
+  
   Future registerWithEmailAndPassword (String email, String password) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
-      final CollectionReference booksCollection = FirebaseFirestore.instance.collection("books$cont");
+      this.email_auth = email;
+
+      // Cria coleção com o email do usuário logado como chave e popula a coleção com livros
+      final CollectionReference booksCollection = FirebaseFirestore.instance.collection(email);
 
       await DatabaseService(uid: user!.uid).updateUserData("A morte feliz", "Milan Kundera", 4, "salvo",booksCollection);
       await DatabaseService(uid: user.uid).updateUserData("Pachinko", "Min Jin Lee", 4, "salvo", booksCollection);
@@ -61,8 +59,6 @@ class AuthService {
       await DatabaseService(uid: user.uid).updateUserData("A festa da insignificancia", "Milan Kundera", 4, "salvo", booksCollection);
       await DatabaseService(uid: user.uid).updateUserData("O mito de Sisifo", "Albert Camus", 4, "salvo", booksCollection);
 
-      cont += 1;
-      //await DatabaseService(uid: user!.uid).updateBooksUser(books);
       return _userFromFireBase(user);
       
 
@@ -72,7 +68,7 @@ class AuthService {
 
     }
   }
-  // register with email and password
+  
 
   // sign out
 
