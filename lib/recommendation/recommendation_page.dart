@@ -32,7 +32,7 @@ class RecommendationPage extends StatelessWidget {
                       for (var i = 0; i < books.length; i++) 
                         BookCardWidget(book: books[i], onTap: () {
                           Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome: this.nome)));
+                          MaterialPageRoute(builder: (context) => BookDetailPage(book:books[i], nome: this.nome, uid:"books5")));
                         })],
                   ),
               ),

@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -47,16 +46,25 @@ class BookModel {
     };
   }
 
-  factory BookModel.fromMap(Map<String, dynamic> map) {
-    return BookModel(
-      titulo: map['titulo'],
-      autor: map['autor'],
-      rating: map['rating'],
-      estante: map['estante'].toString().parse,
-    );
+  BookModel.fromJson(Map<String, Object?> json) 
+    : this(
+      titulo: json['titulo']! as String,
+      autor: json['autor']! as String,
+      rating: json['rating']! as int,
+      estante: json['estante'].toString().parse,
+  );
+
+  Map<String, Object?> toJson() {
+    return {
+      'titulo': titulo,
+      'autor': autor,
+      'rating': rating,
+      'estante': estante.parse,
+    };
   }
+  
 
-  String toJson() => json.encode(toMap());
+  //String toJson() => json.encode(toMap());
 
-  factory BookModel.fromJson(String source) => BookModel.fromMap(json.decode(source));
+  //factory BookModel.fromJson(String source) => BookModel.fromMap(json.decode(source));
 }

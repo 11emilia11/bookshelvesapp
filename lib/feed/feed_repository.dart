@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:bookshelvesapp/shared/models/book_model.dart';
-import 'package:bookshelvesapp/shared/models/shelf_model.dart';
+
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/services.dart';
 

@@ -1,7 +1,7 @@
 import 'package:bookshelvesapp/feed/feed_repository.dart';
 import 'package:bookshelvesapp/feed/feed_state.dart';
 import 'package:bookshelvesapp/shared/models/book_model.dart';
-import 'package:bookshelvesapp/shared/models/shelf_model.dart';
+
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/cupertino.dart';
 

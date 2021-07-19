@@ -30,7 +30,7 @@ class BookCardWidget extends StatelessWidget {
           color: AppColors.white,
           borderRadius: BorderRadius.circular(10)),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
            Container(
              height: 40,
@@ -43,6 +43,7 @@ class BookCardWidget extends StatelessWidget {
          ),
          Column(
            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+           crossAxisAlignment: CrossAxisAlignment.start,
            children:[
              Text(
               book.titulo,

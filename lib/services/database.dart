@@ -8,11 +8,17 @@ class DatabaseService {
   
   DatabaseService({this.uid});
 
+  final booksRef = FirebaseFirestore.instance.collection("books1").withConverter<BookModel>(
+    fromFirestore: (snapshot, _) => BookModel.fromJson(snapshot.data()!),
+    toFirestore: (book, _) => book.toJson(),
+    );
+
   final CollectionReference booksCollection = FirebaseFirestore.instance.collection("books");
 
-  Future<void> updateUserData(String nome, String autor, int rating, String estante) async {
-    return await booksCollection.doc().set({
-      'nome': nome,
+
+  Future<void> updateUserData(String nome, String autor, int rating, String estante, CollectionReference booksCollection) async {
+    return await booksCollection.doc(nome).set({
+      'titulo': nome,
       'autor': autor,
       'rating': rating,
       'estante': estante,
@@ -20,44 +26,18 @@ class DatabaseService {
     });
   }
 
-  Future updateBooksUser(List<BookModel> books) async {
-    var batch = _firestore.batch();
-    books.forEach((book) { 
-      var docRef = _firestore.collection("bookscol").doc();
-      batch.set(docRef, book);
-
-    });
-    return batch.commit();
-   // for (var i = 0; i < books.length; i++) {
-   //   updateUserData(books[i].titulo, books[i].autor, books[i].rating, books[i].estante.toString());
-   // }
-  }
-
-
+  
   Stream<QuerySnapshot> readBooks() {
     return booksCollection.snapshots();
   }
 
-  Future<void> updateBook({
-    required Estante estante,
-    required String titulo,
-    required String autor,
-    required String rating,
-    required String docId,
-  }) async {
-    DocumentReference documentReferencer = booksCollection.doc(uid).collection("books").doc(docId);
 
-    Map<String, dynamic> data = <String, dynamic>{
-      "autor": autor,
-      "estante": estante.parse,
-      "nome": titulo,
-      "rating": rating,
-      
-    };
 
-    await documentReferencer
-    .update(data)
-    .whenComplete(() => print("Book item updated in the database"))
-    .catchError((e) => print(e));
-  }
+
+  Future<void> updateBook(String col,String titulo, Estante estante) {
+    return FirebaseFirestore.instance.collection(col).doc(titulo)
+    .update({'estante': estante.parse})
+    .then((value) => print('Livro atualizado'))
+    .catchError((error) => print("Falha ao atualizar livro $error"));
+  } 
 }

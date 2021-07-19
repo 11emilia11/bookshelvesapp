@@ -2,6 +2,7 @@ import 'package:bookshelvesapp/book/widgets/book_detail_app_bar_widget.dart';
 import 'package:bookshelvesapp/feed/feed_page.dart';
 import 'package:bookshelvesapp/feed/widgets/appbar/app_bar_widget.dart';
 import 'package:bookshelvesapp/search/search_page.dart';
+import 'package:bookshelvesapp/services/database.dart';
 import 'package:bookshelvesapp/shared/models/book_model.dart';
 import 'package:bookshelvesapp/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,9 @@ import 'package:bookshelvesapp/core/app_text_styles.dart';
 class BookDetailPage extends StatefulWidget {
   BookModel book;
   final String nome;
+  final String uid;
 
-  BookDetailPage({Key? key,required this.book, required this.nome }) : super(key: key);
+  BookDetailPage({Key? key,required this.book, required this.nome, required this.uid }) : super(key: key);
 
   @override
   _BookDetailPageState createState() => _BookDetailPageState();
@@ -70,7 +72,8 @@ class _BookDetailPageState extends State<BookDetailPage> {
                           setState(() {
                             widget.book.estante = Estante.salvo;
                           });
-                          
+                          final DatabaseService _dbservice = DatabaseService();
+                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
                         }, 
                         icon: Icon(
                           (widget.book.estante == Estante.salvo) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
@@ -83,8 +86,10 @@ class _BookDetailPageState extends State<BookDetailPage> {
                         IconButton(onPressed: (){
                           setState(() {
                             widget.book.estante = Estante.lido;
-;
+
                           });
+                          final DatabaseService _dbservice = DatabaseService();
+                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
                          
                         }, icon: Icon(
                           (widget.book.estante == Estante.lido) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
@@ -98,7 +103,9 @@ class _BookDetailPageState extends State<BookDetailPage> {
                           setState(() {
                             widget.book.estante = Estante.lendo;
                           });
-                          this.widget.book.estante = Estante.lendo;
+                          final DatabaseService _dbservice = DatabaseService();
+                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
+
                         }, icon: Icon(
                            (widget.book.estante == Estante.lendo) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
                            color: Color.fromRGBO(130, 87, 229, 0.695)),
@@ -113,7 +120,9 @@ class _BookDetailPageState extends State<BookDetailPage> {
                           setState(() {
                             widget.book.estante =  Estante.suspenso;
                           });
-                          this.widget.book.estante = Estante.suspenso;
+                         final DatabaseService _dbservice = DatabaseService();
+                          _dbservice.updateBook(widget.uid,widget.book.titulo, widget.book.estante);
+                          
                         }, icon: Icon(
                           (widget.book.estante ==  Estante.suspenso) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
                           color: Color(0xFFCC3750))),
