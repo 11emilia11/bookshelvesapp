@@ -60,13 +60,16 @@ class _MyAppState extends State<MyApp> {
     if (!_initialized) {
       return MaterialApp(
         title: "Carregando",
-        home: Scaffold(appBar: null, body: Center( child: Text("Carregando do firebase"),)),
+        home: Scaffold(appBar: null, body: Center( child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(
+            Colors.purple,
+        )))),
       );}
       
 
     return MaterialApp(
       title: "Bookshelves",
-      home: FeedPage(nome: 'Emilia')
+      home: HomePage()
     );
   }
 }

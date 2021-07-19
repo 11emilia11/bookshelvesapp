@@ -31,7 +31,7 @@ class _FeedPageState extends State<FeedPage> {
  
 
   List<BookModel> books = [
-      BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.lido),
+      BookModel(autor: "George Orwell", titulo: "1984", rating: 0, estante: Estante.lendo),
       BookModel(autor: "William Golding", titulo: "O senhor das moscas", rating: 0, estante: Estante.lido),
       BookModel(autor: "Haruki Murakami", titulo: "Kafka à beira mar", rating: 0, estante: Estante.lendo),
       BookModel(autor: "John Fowles", titulo: "O colecionador", rating: 0, estante: Estante.salvo),

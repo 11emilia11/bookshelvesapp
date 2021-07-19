@@ -25,7 +25,6 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: RegisterAppBar(),
       body: Padding(
-        //padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         padding: EdgeInsets.all(20),
         child: Form(
           key: _formKey,
@@ -106,27 +105,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               MaterialPageRoute(builder: (context) => FeedPage(nome: email,)));
 
                           }
-
-
-
-                    /*
-                    try {
-                      UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-                      
-                    } on FirebaseAuthException catch (e) {
-                      if (e.code == 'weak-password') {
-                        print('A senha é muito fraca');
-                      } else if (e.code == 'email-already-in-use') {
-                        print('Uma conta já existe para este e-mail.');
-                      }
-                    } catch (e) {
-                      print(e);
-                    }
-
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FeedPage(nome: name)));}
-*/
                 }},
                 child: Container(
                 height: 50.0,

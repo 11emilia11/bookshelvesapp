@@ -20,7 +20,7 @@ class BookDetailPage extends StatefulWidget {
 
 class _BookDetailPageState extends State<BookDetailPage> {
   
-  String estante = 'padrao';
+  //String estante = 'padrao';
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +68,12 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       children: [
                         IconButton(onPressed: (){
                           setState(() {
-                            estante = 'salvo';
+                            widget.book.estante = Estante.salvo;
                           });
-                          this.widget.book.estante = Estante.salvo;
+                          
                         }, 
                         icon: Icon(
-                          (estante == 'salvo') ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
+                          (widget.book.estante == Estante.salvo) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
                           color: Color(0xFF57B6E5))),
                         Text('Salvar',style: TextStyle(color: AppColors.black),)
                       ],
@@ -82,11 +82,12 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       children: [
                         IconButton(onPressed: (){
                           setState(() {
-                            estante = 'lido';
+                            widget.book.estante = Estante.lido;
+;
                           });
-                          this.widget.book.estante = Estante.lido;
+                         
                         }, icon: Icon(
-                          (estante == 'lido') ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
+                          (widget.book.estante == Estante.lido) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
                           color:Colors.greenAccent[400])),
                         Text('Lido', style: TextStyle(color: AppColors.black),)
                       ],
@@ -95,11 +96,11 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       children: [
                         IconButton(onPressed: (){
                           setState(() {
-                            estante = 'lendo';
+                            widget.book.estante = Estante.lendo;
                           });
                           this.widget.book.estante = Estante.lendo;
                         }, icon: Icon(
-                           (estante == 'lendo') ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
+                           (widget.book.estante == Estante.lendo) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
                            color: Color.fromRGBO(130, 87, 229, 0.695)),
                          ),
 
@@ -110,11 +111,11 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       children: [
                         IconButton(onPressed: (){
                           setState(() {
-                            estante = 'suspenso';
+                            widget.book.estante =  Estante.suspenso;
                           });
                           this.widget.book.estante = Estante.suspenso;
                         }, icon: Icon(
-                          (estante == 'suspenso') ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
+                          (widget.book.estante ==  Estante.suspenso) ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
                           color: Color(0xFFCC3750))),
                         Text('Suspenso',style: TextStyle(color: AppColors.black),)
                       ],
